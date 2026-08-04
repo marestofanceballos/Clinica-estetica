@@ -1,0 +1,31 @@
+/* Ajustes responsive globales.
+   Nota: cada componente maneja sus propios breakpoints en su .css
+   colocado (ej. Navbar/navbar.css, Hero/hero.css). Este archivo cubre
+   utilidades y textos globales que no pertenecen a un componente puntual. */
+
+@media (max-width: 768px) {
+  .section-head {
+    margin-bottom: 40px;
+  }
+
+  .contacto__grid,
+  .about-home__inner,
+  .sobre-mi__intro {
+    gap: 36px;
+  }
+}
+
+@media (max-width: 576px) {
+  .container-narrow {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .btn-brand {
+    padding: 13px 26px;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 8vw, 2.6rem);
+  }
+}

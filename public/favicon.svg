@@ -1,0 +1,16 @@
+<svg
+  width="64"
+  height="64"
+  viewBox="0 0 64 64"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-label="Armonización Orofacial"
+>
+  <circle cx="32" cy="32" r="32" fill="#1c1a2c" />
+  <g fill="none" stroke="#f2e9da" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M26,20 C20,21 18,28 21,35 C23,39 23,44 20,48 C26,51 31,48 33,43" />
+    <path d="M33,43 C36,37 35,29 31,24 C37,22 43,25 45,31 C47,37 44,43 39,46" />
+    <circle cx="27" cy="32" r="1.6" fill="#f2e9da" stroke="none" />
+    <circle cx="38" cy="35" r="1.6" fill="#f2e9da" stroke="none" />
+  </g>
+</svg>

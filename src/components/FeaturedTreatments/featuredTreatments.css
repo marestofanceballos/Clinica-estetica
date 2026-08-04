@@ -1,0 +1,10 @@
+.featured-treatments__link {
+  font-family: var(--font-label);
+  font-size: 0.85rem;
+  color: var(--color-navy);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  white-space: nowrap;
+}
