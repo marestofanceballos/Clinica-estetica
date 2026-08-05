@@ -70,14 +70,14 @@ export default function TratamientoDetalle() {
           <span>{tratamiento.nombre}</span>
         </nav>
 
-        <div className="row g-5 align-items-start">
-          <div className="col-12 col-lg-6">
+        <div className="row g-5">
+          <div className="col-12 col-lg-5">
             <div className="treatment-detail__main-image">
               <img src={tratamiento.imagen} alt={tratamiento.nombre} />
             </div>
           </div>
 
-          <div className="col-12 col-lg-6">
+          <div className="col-12 col-lg-7">
             <span className="tag-pill mb-3">{tratamiento.categoria}</span>
             <h1 className="treatment-detail__title">{tratamiento.nombre}</h1>
 
@@ -96,6 +96,35 @@ export default function TratamientoDetalle() {
               </ul>
             )}
 
+            {detalle?.queEs && (
+              <section className="treatment-detail__section">
+                <span className="eyebrow">¿Qué es?</span>
+                <p className="treatment-detail__section-text">{detalle.queEs}</p>
+              </section>
+            )}
+
+            {detalle?.queHace?.length > 0 && (
+              <section className="treatment-detail__section">
+                <span className="eyebrow">¿Qué hace?</span>
+                <div className="treatment-detail__benefit-list">
+                  {detalle.queHace.map((beneficio) => (
+                    <div className="treatment-detail__benefit-row" key={beneficio.titulo}>
+                      <h3 className="treatment-detail__benefit-title">{beneficio.titulo}</h3>
+                      <p className="treatment-detail__benefit-text">{beneficio.texto}</p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            <div className="treatment-detail__notice">
+              <i className="bi bi-info-circle" aria-hidden="true"></i>
+              <p>
+                <strong>Importante:</strong> todos los tratamientos requieren un diagnóstico previo. La
+                entrevista puede realizarse de manera virtual o presencial.
+              </p>
+            </div>
+
             <div className="treatment-detail__actions">
               <Link to="/turnos" className="btn-brand btn-brand-primary">
                 <i className="bi bi-calendar-check" aria-hidden="true"></i>
@@ -103,40 +132,6 @@ export default function TratamientoDetalle() {
               </Link>
             </div>
           </div>
-        </div>
-
-        {detalle?.queEs && (
-          <section className="treatment-detail__section">
-            <span className="eyebrow">¿Qué es?</span>
-            <p className="treatment-detail__section-text">{detalle.queEs}</p>
-          </section>
-        )}
-
-        {detalle?.queHace?.length > 0 && (
-          <section className="treatment-detail__section">
-            <span className="eyebrow">¿Qué hace?</span>
-            <div className="row g-4">
-              {detalle.queHace.map((beneficio, index) => (
-                <div className="col-12 col-md-4" key={beneficio.titulo}>
-                  <div className="treatment-detail__benefit">
-                    <span className="treatment-detail__benefit-num">{String(index + 1).padStart(2, "0")}</span>
-                    <h3 className="treatment-detail__benefit-title">{beneficio.titulo}</h3>
-                    <p className="treatment-detail__benefit-text">{beneficio.texto}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
-
-        <div className="treatment-detail__cta">
-          <div>
-            <h3>¿Lista para empezar tu tratamiento?</h3>
-            <p>Coordiná una consulta y diseñemos juntas el plan que mejor se adapte a vos.</p>
-          </div>
-          <Link to="/turnos" className="btn-brand btn-brand-primary">
-            Pedir turno
-          </Link>
         </div>
       </div>
     </div>
