@@ -13,20 +13,24 @@ export default function Contact() {
             </h2>
             <p className="section-lede">
               Escribinos por WhatsApp, completá el formulario de contacto o reservá tu turno
-              online. Te respondemos dentro de las 24 horas hábiles.
+              online.
             </p>
             <div className="contact-home__items">
-              <div>
-                <i className="bi bi-geo-alt" aria-hidden="true"></i>
-                <span>Av. Siempre Viva 1234, Aguilares, Tucumán</span>
-              </div>
+              <div className="contact-home__schedule">
+            <i className="bi bi-clock" aria-hidden="true"></i>
+              <span>
+               Lunes, Martes, Jueves y Viernes de 14 a 20 hs (Beccar)
+            <br />
+               Miércoles de 8 a 14 hs (Martínez)
+             </span>
+            </div>
               <div>
                 <i className="bi bi-telephone" aria-hidden="true"></i>
-                <span>+54 381 000-0000</span>
+                <span>+54 9 1137055547</span>
               </div>
               <div>
                 <i className="bi bi-envelope" aria-hidden="true"></i>
-                <span>hola@armonizacionorofacial.com</span>
+                <span>dra.solangeceballosr@gmail.com</span>
               </div>
             </div>
             <div className="contact-home__actions">

@@ -97,6 +97,32 @@
 @media (max-width: 991px) {
   .site-footer__top {
     grid-template-columns: 1fr 1fr;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .site-footer__bottom-inner {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .site-footer__brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .site-footer__socials {
+    justify-content: center;
+  }
+
+  .site-footer__col {
+    text-align: center;
+  }
+
+  .site-footer__contact li {
+    justify-content: center;
   }
 }
 

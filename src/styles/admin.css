@@ -1,0 +1,318 @@
+/* Estilos compartidos por las páginas del panel de administración
+   (/admin/*). Reutiliza los tokens de diseño de global.css para no
+   introducir un sistema visual nuevo. */
+
+/* --- Login --- */
+.admin-auth {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background: var(--color-bg-alt);
+}
+
+.admin-auth__card {
+  width: 100%;
+  max-width: 400px;
+  padding: 40px 36px;
+}
+
+.admin-auth__title {
+  font-size: 1.6rem;
+  margin: 6px 0 24px;
+}
+
+.admin-auth__error {
+  background: rgba(179, 84, 63, 0.1);
+  color: #b3543f;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  margin-bottom: 18px;
+}
+
+.admin-auth__submit {
+  width: 100%;
+  justify-content: center;
+  margin-top: 6px;
+}
+
+/* --- Campos de formulario (login + alta/edición) --- */
+.admin-field {
+  margin-bottom: 18px;
+}
+
+.admin-field label {
+  display: block;
+  font-family: var(--font-label);
+  font-size: 0.8rem;
+  color: var(--color-ink);
+  margin-bottom: 8px;
+}
+
+.admin-field input,
+.admin-field select,
+.admin-field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--color-line);
+  border-radius: 10px;
+  background: var(--color-bg);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: var(--color-ink);
+  transition: border-color 0.3s var(--ease);
+}
+
+.admin-field textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.admin-field input:focus,
+.admin-field select:focus,
+.admin-field textarea:focus {
+  outline: none;
+  border-color: var(--color-navy);
+}
+
+.admin-field input.is-invalid,
+.admin-field select.is-invalid,
+.admin-field textarea.is-invalid {
+  border-color: #b3543f;
+}
+
+.admin-field__error {
+  display: block;
+  color: #b3543f;
+  font-size: 0.76rem;
+  margin-top: 6px;
+  font-family: var(--font-label);
+}
+
+.admin-field__hint {
+  display: block;
+  color: var(--color-ink-faint);
+  font-size: 0.76rem;
+  margin-top: 6px;
+}
+
+.admin-field--checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-field--checkbox input {
+  width: auto;
+}
+
+.admin-field--checkbox label {
+  margin: 0;
+}
+
+/* --- Listado de tratamientos --- */
+.admin-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.admin-toolbar__meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.admin-counter {
+  font-family: var(--font-label);
+  font-size: 0.8rem;
+  color: var(--color-ink-soft);
+  background: var(--color-sand);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+}
+
+.admin-counter--full {
+  color: var(--color-navy);
+}
+
+.admin-table-wrap {
+  overflow-x: auto;
+  background: var(--color-white);
+  border-radius: var(--radius-soft);
+  box-shadow: var(--shadow-card);
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 14px 18px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-line);
+  white-space: nowrap;
+}
+
+.admin-table th {
+  font-family: var(--font-label);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-ink-faint);
+}
+
+.admin-table tr:last-child td {
+  border-bottom: none;
+}
+
+.admin-table__thumb {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  background: var(--color-bg);
+  border-radius: 8px;
+}
+
+.admin-table__actions {
+  display: flex;
+  gap: 14px;
+}
+
+.admin-table__actions button,
+.admin-table__actions a {
+  font-family: var(--font-label);
+  font-size: 0.8rem;
+  color: var(--color-navy);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.admin-table__actions .is-danger {
+  color: #b3543f;
+}
+
+.admin-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--color-ink-faint);
+}
+
+/* --- Formulario de alta/edición --- */
+.admin-form {
+  max-width: 760px;
+}
+
+.admin-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 20px;
+}
+
+.admin-field--full {
+  grid-column: 1 / -1;
+}
+
+.admin-form-section {
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid var(--color-line);
+}
+
+.admin-form-section h2 {
+  font-size: 1.15rem;
+  margin-bottom: 4px;
+}
+
+.admin-form-section__hint {
+  color: var(--color-ink-faint);
+  font-size: 0.85rem;
+  margin-bottom: 20px;
+}
+
+.admin-repeatable-item {
+  border: 1px solid var(--color-line);
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 14px;
+  position: relative;
+}
+
+.admin-repeatable-item__remove {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  color: var(--color-ink-faint);
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.admin-repeatable-item__remove:hover {
+  color: #b3543f;
+}
+
+.admin-repeatable-add {
+  background: none;
+  border: 1px dashed var(--color-line);
+  border-radius: 10px;
+  padding: 12px;
+  width: 100%;
+  text-align: center;
+  font-family: var(--font-label);
+  font-size: 0.85rem;
+  color: var(--color-ink-soft);
+  cursor: pointer;
+  transition: border-color 0.3s var(--ease), color 0.3s var(--ease);
+}
+
+.admin-repeatable-add:hover {
+  border-color: var(--color-navy);
+  color: var(--color-navy);
+}
+
+.admin-indicacion-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.admin-indicacion-row input {
+  flex: 1;
+}
+
+.admin-form-error {
+  background: rgba(179, 84, 63, 0.1);
+  color: #b3543f;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  margin-bottom: 24px;
+}
+
+.admin-form-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 36px;
+}
+
+@media (max-width: 640px) {
+  .admin-form-grid {
+    grid-template-columns: 1fr;
+  }
+}

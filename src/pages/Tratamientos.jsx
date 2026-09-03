@@ -31,21 +31,7 @@ export default function Tratamientos() {
 
       <section className="section pt-0">
         <div className="container-narrow">
-          <div className="d-flex flex-wrap gap-2 justify-content-center mb-5">
-            {categoriasTratamientos.map((cat) => (
-              <button
-                key={cat}
-                type="button"
-                onClick={() => setCategoria(cat)}
-                className={`btn-brand btn-brand-sm ${
-                  categoria === cat ? "btn-brand-primary" : "btn-brand-outline"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-
+         
           {loading ? (
             <Loader label="Cargando tratamientos" />
           ) : (

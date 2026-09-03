@@ -1,0 +1,25 @@
+.admin-image-preview {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+  background: var(--color-bg);
+  border: 1px solid var(--color-line);
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.admin-image-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-image-row input {
+  flex: 1;
+}
+
+.admin-image-upload {
+  flex-shrink: 0;
+  cursor: pointer;
+  white-space: nowrap;
+}

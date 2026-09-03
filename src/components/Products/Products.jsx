@@ -22,6 +22,13 @@ export default function Products() {
     };
   }, []);
 
+  // La cantidad de destacados tiene un máximo de 4 (validado en el
+  // servidor). La grilla se reparte en ese número de columnas parejas
+  // en vez de reservar siempre 4 espacios, para no dejar huecos vacíos
+  // cuando hay menos.
+  const columnasDestacados = Math.max(1, Math.min(productos.length, 4));
+  const columnaDestacadosClass = `col-lg-${12 / columnasDestacados}`;
+
   return (
     <section className="section bg-alt products-home">
       <div className="container-narrow">
@@ -41,7 +48,7 @@ export default function Products() {
         ) : (
           <div className="row g-4">
             {productos.map((producto) => (
-              <div className="col-12 col-sm-6 col-lg-3" key={producto.id}>
+              <div className={`col-12 col-sm-6 ${columnaDestacadosClass}`} key={producto.id}>
                 <ProductCard producto={producto} />
               </div>
             ))}

@@ -3,12 +3,10 @@ import PageHeader from "../components/PageHeader/PageHeader";
 import ProductCard from "../components/ProductCard/ProductCard";
 import Loader from "../components/Loader/Loader";
 import { getProductos } from "../services/productosService";
-import { categoriasProductos } from "../data/productos";
 
 export default function Tienda() {
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [categoria, setCategoria] = useState("Todos");
   const [busqueda, setBusqueda] = useState("");
 
   useEffect(() => {
@@ -19,37 +17,20 @@ export default function Tienda() {
   }, []);
 
   const listaFiltrada = useMemo(() => {
-    return productos
-      .filter((p) => categoria === "Todos" || p.categoria === categoria)
-      .filter((p) => p.nombre.toLowerCase().includes(busqueda.toLowerCase()));
-  }, [productos, categoria, busqueda]);
+    return productos.filter((p) => p.nombre.toLowerCase().includes(busqueda.toLowerCase()));
+  }, [productos, busqueda]);
 
   return (
     <>
       <PageHeader
         eyebrow="Tienda"
         title="Skincare para cuidar tu piel entre sesiones"
-        lede="Productos seleccionados por nuestro equipo para acompañar y prolongar los resultados de cada tratamiento."
+        lede="Productos seleccionados por mí para acompañar y prolongar los resultados de cada tratamiento."
       />
 
       <section className="section pt-0">
         <div className="container-narrow">
-          <div className="d-flex flex-wrap gap-3 justify-content-between align-items-center mb-5">
-            <div className="d-flex flex-wrap gap-2">
-              {categoriasProductos.map((cat) => (
-                <button
-                  key={cat}
-                  type="button"
-                  onClick={() => setCategoria(cat)}
-                  className={`btn-brand btn-brand-sm ${
-                    categoria === cat ? "btn-brand-primary" : "btn-brand-outline"
-                  }`}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
-
+          <div className="d-flex justify-content-end mb-5">
             <input
               type="search"
               placeholder="Buscar producto..."

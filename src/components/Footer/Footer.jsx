@@ -14,14 +14,14 @@ export default function Footer() {
             personalizados.
           </p>
           <div className="site-footer__socials">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <a href="https://www.instagram.com/solarmonizacionfacial?utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <i className="bi bi-instagram" aria-hidden="true"></i>
             </a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <a href="https://www.facebook.com/share/18oRLDNirW/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
               <i className="bi bi-facebook" aria-hidden="true"></i>
             </a>
-            <a href="https://wa.me/5493810000000" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-              <i className="bi bi-whatsapp" aria-hidden="true"></i>
+            <a href="https://www.tiktok.com/@solarmonizacionfacial?_r=1&_t=ZS-99Ge34PjZLB" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+             <i className="bi bi-tiktok" aria-hidden="true"></i>
             </a>
           </div>
         </div>
@@ -41,19 +41,19 @@ export default function Footer() {
           <h4>Clínica</h4>
           <ul>
             <li><Link to="/turnos">Pedir turno</Link></li>
-            <li><Link to="/tratamientos">Armonización facial</Link></li>
-            <li><Link to="/tratamientos">Rejuvenecimiento</Link></li>
-            <li><Link to="/tienda">Skincare</Link></li>
+            <li><Link to="/tratamientos">Tratamientos</Link></li>
+            <li><Link to="/primera-consulta">Primera consulta</Link></li>
+            <li><Link to="/tienda">Tienda</Link></li>
           </ul>
         </div>
 
         <div className="site-footer__col">
           <h4>Contacto</h4>
           <ul className="site-footer__contact">
-            <li><i className="bi bi-geo-alt" aria-hidden="true"></i> Av. Siempre Viva 1234, Aguilares, Tucumán</li>
-            <li><i className="bi bi-telephone" aria-hidden="true"></i> +54 381 000-0000</li>
-            <li><i className="bi bi-envelope" aria-hidden="true"></i> hola@armonizacionorofacial.com</li>
-            <li><i className="bi bi-clock" aria-hidden="true"></i> Lun a Vie, 9 a 19 hs</li>
+            <li><i className="bi bi-telephone" aria-hidden="true"></i> +54 9 1137055547</li>
+            <li><i className="bi bi-envelope" aria-hidden="true"></i> dra.solangeceballosr@gmail.com</li>
+            <li><i className="bi bi-clock" aria-hidden="true"></i> Lunes , Martes , Jueves y Viernes de 14 a 20 hs (Beccar)
+                  Miercoles de 8 a 14 hs (Martinez)</li>
           </ul>
         </div>
       </div>
@@ -61,7 +61,6 @@ export default function Footer() {
       <div className="site-footer__bottom">
         <div className="container-narrow site-footer__bottom-inner">
           <span>© {year} Armonización Orofacial. Todos los derechos reservados.</span>
-          <span className="site-footer__legal">Diseño y desarrollo web</span>
         </div>
       </div>
     </footer>

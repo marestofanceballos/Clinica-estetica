@@ -20,7 +20,7 @@ export default function Card({ imagen, tag, titulo, texto, to, meta, ctaLabel = 
         <div className="brand-card__footer">
           {meta && <span className="brand-card__meta">{meta}</span>}
           {to && (
-            <Link to={to} className="brand-card__link">
+            <Link to={to} className="brand-card__link stretched-link">
               {ctaLabel}
               <i className="bi bi-arrow-up-right" aria-hidden="true"></i>
             </Link>

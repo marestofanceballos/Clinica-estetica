@@ -75,6 +75,18 @@
   color: var(--color-ink);
 }
 
+.contact-home__schedule {
+  align-items: flex-start !important;
+}
+
+.contact-home__schedule i {
+  margin-top: 3px;
+}
+
+.contact-home__schedule span {
+  line-height: 1.5;
+}
+
 @media (max-width: 576px) {
   .contact-home__panel {
     padding: 44px 28px;

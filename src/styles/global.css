@@ -245,6 +245,7 @@ p {
 
 /* Card base */
 .card-elegant {
+  position: relative;
   background: var(--color-white);
   border-radius: var(--radius-soft);
   overflow: hidden;

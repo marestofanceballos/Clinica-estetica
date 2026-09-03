@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
 import { formatPrecio } from "../../utils/format";
@@ -5,6 +6,7 @@ import "./productCard.css";
 
 export default function ProductCard({ producto }) {
   const { addItem } = useCart();
+  const [imagenRota, setImagenRota] = useState(false);
 
   const handleAdd = (e) => {
     e.preventDefault();
@@ -16,14 +18,28 @@ export default function ProductCard({ producto }) {
     });
   };
 
+  const mostrarPlaceholder = !producto.imagen || imagenRota;
+
   return (
     <article className="product-card card-elegant">
-      <Link to={`/tienda/${producto.id}`} className="product-card__media">
-        <img src={producto.imagen} alt={producto.nombre} loading="lazy" />
+      <div className="product-card__media">
+        {mostrarPlaceholder ? (
+          <div className="product-card__media-placeholder">
+            <i className="bi bi-image" aria-hidden="true"></i>
+            <span>Sin imagen</span>
+          </div>
+        ) : (
+          <img
+            src={producto.imagen}
+            alt={producto.nombre}
+            loading="lazy"
+            onError={() => setImagenRota(true)}
+          />
+        )}
         <span className="tag-pill product-card__tag">{producto.categoria}</span>
-      </Link>
+      </div>
       <div className="product-card__body">
-        <Link to={`/tienda/${producto.id}`} className="product-card__title">
+        <Link to={`/tienda/${producto.id}`} className="product-card__title stretched-link">
           {producto.nombre}
         </Link>
         <p className="product-card__text">{producto.resumen}</p>

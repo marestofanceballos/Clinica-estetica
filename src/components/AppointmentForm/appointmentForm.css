@@ -48,6 +48,15 @@
   font-family: var(--font-label);
 }
 
+.appointment-form__helper {
+  display: block;
+  color: var(--color-ink-faint);
+  font-size: 0.76rem;
+  line-height: 1.4;
+  margin-top: 6px;
+  font-family: var(--font-label);
+}
+
 .appointment-form__submit {
   margin-top: 32px;
   width: 100%;

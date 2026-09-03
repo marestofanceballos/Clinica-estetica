@@ -53,34 +53,31 @@ export default function Contacto() {
               <i className="bi bi-geo-alt" aria-hidden="true"></i>
               <div>
                 <h3>Ubicación</h3>
-                <p>Av. Siempre Viva 1234, Aguilares, Tucumán</p>
+                <p>Arce 441 , CABA.BS.AS.</p>
               </div>
             </div>
             <div className="contacto__item">
               <i className="bi bi-telephone" aria-hidden="true"></i>
               <div>
                 <h3>Teléfono</h3>
-                <p>+54 381 000-0000</p>
+                <p>+54 9 1137055547</p>
               </div>
             </div>
             <div className="contacto__item">
               <i className="bi bi-envelope" aria-hidden="true"></i>
               <div>
                 <h3>Email</h3>
-                <p>hola@armonizacionorofacial.com</p>
+                <p>dra.solangeceballosr@gmail.com</p>
               </div>
             </div>
             <div className="contacto__item">
               <i className="bi bi-clock" aria-hidden="true"></i>
               <div>
                 <h3>Horarios</h3>
-                <p>Lunes a viernes, de 9 a 19 hs</p>
+                <p>Lunes , Martes , Jueves y Viernes de 14 a 20 hs (Beccar)
+                  Miercoles de 8 a 14 hs (Martinez)
+                </p>
               </div>
-            </div>
-
-            <div className="contacto__map" role="img" aria-label="Mapa de ubicación de la clínica">
-              <i className="bi bi-map" aria-hidden="true"></i>
-              <span>Mapa de ubicación</span>
             </div>
           </div>
 

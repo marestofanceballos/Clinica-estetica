@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { tratamientos } from "../../data/tratamientos";
+import { useEffect, useState } from "react";
+import { getTratamientos } from "../../services/tratamientosService";
 import { solicitarTurno } from "../../services/turnosService";
 import "./appointmentForm.css";
 
@@ -48,11 +48,51 @@ function validar(form) {
   return errores;
 }
 
+const WHATSAPP_NUMERO = "5491137055547";
+
+function formatFechaTentativa(fechaISO) {
+  const [anio, mes, dia] = fechaISO.split("-");
+  return `${dia}/${mes}/${anio}`;
+}
+
+function armarUrlWhatsApp(form) {
+  const lineas = [
+    "Hola! Quiero reservar un turno de evaluación.",
+    `Nombre: ${form.nombre}`,
+    `Teléfono: ${form.telefono}`,
+    `Tratamiento: ${form.tratamiento}`,
+    `Fecha tentativa: ${formatFechaTentativa(form.fecha)}`,
+  ];
+
+  if (form.mensaje.trim()) {
+    lineas.push(`Comentario: ${form.mensaje.trim()}`);
+  }
+
+  const mensaje = encodeURIComponent(lineas.join("\n"));
+  return `https://wa.me/${WHATSAPP_NUMERO}?text=${mensaje}`;
+}
+
 export default function AppointmentForm() {
   const [form, setForm] = useState(initialForm);
   const [errores, setErrores] = useState({});
   const [enviando, setEnviando] = useState(false);
   const [enviado, setEnviado] = useState(false);
+  const [tratamientos, setTratamientos] = useState([]);
+
+  useEffect(() => {
+    let activo = true;
+    getTratamientos()
+      .then((data) => {
+        if (activo) setTratamientos(data);
+      })
+      .catch(() => {
+        // Si falla la carga, el select simplemente queda sin opciones
+        // (además de "Seleccioná una opción") en vez de romper la página.
+      });
+    return () => {
+      activo = false;
+    };
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -71,10 +111,21 @@ export default function AppointmentForm() {
       return;
     }
 
+    // Se abre ya (en blanco) para que el navegador no la bloquee por no
+    // disparar de forma perfectamente sincrónica al click; recién se le
+    // asigna la URL de WhatsApp una vez confirmado que la solicitud se
+    // guardó correctamente.
+    const ventanaWhatsApp = window.open("", "_blank");
+
     setEnviando(true);
     await solicitarTurno(form);
     setEnviando(false);
     setEnviado(true);
+
+    if (ventanaWhatsApp) {
+      ventanaWhatsApp.location.href = armarUrlWhatsApp(form);
+    }
+
     setForm(initialForm);
   };
 
@@ -173,6 +224,10 @@ export default function AppointmentForm() {
             aria-invalid={Boolean(errores.fecha)}
           />
           {errores.fecha && <span className="appointment-form__error">{errores.fecha}</span>}
+          <span className="appointment-form__helper">
+            Atención: Lunes, Martes, Jueves y Viernes de 14 a 20 hs (Beccar) — Miércoles de 8 a 14 hs
+            (Martínez).
+          </span>
         </div>
 
         <div className="col-12">
