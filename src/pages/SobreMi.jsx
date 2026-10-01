@@ -122,7 +122,7 @@ const FORMACION = [
 
 export default function SobreMi() {
   return (
-    <>
+    <div className="sobre-mi-page">
       <PageHeader
         eyebrow="Sobre mí"
         title="Tratamientos objetivos, resultados verdaderos"
@@ -194,8 +194,6 @@ export default function SobreMi() {
           </ul>
         </div>
       </section>
-
-     
-    </>
+    </div>
   );
 }

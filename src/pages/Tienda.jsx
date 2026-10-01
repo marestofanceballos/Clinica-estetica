@@ -3,6 +3,7 @@ import PageHeader from "../components/PageHeader/PageHeader";
 import ProductCard from "../components/ProductCard/ProductCard";
 import Loader from "../components/Loader/Loader";
 import { getProductos } from "../services/productosService";
+import "../styles/tienda.css";
 
 export default function Tienda() {
   const [productos, setProductos] = useState([]);
@@ -21,7 +22,7 @@ export default function Tienda() {
   }, [productos, busqueda]);
 
   return (
-    <>
+    <div className="tienda-page">
       <PageHeader
         eyebrow="Tienda"
         title="Skincare para cuidar tu piel entre sesiones"
@@ -56,6 +57,6 @@ export default function Tienda() {
           )}
         </div>
       </section>
-    </>
+    </div>
   );
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
+import logoSol from "../../assets/images/logo_sc_navbar_negro.png";
 import "./navbar.css";
 
 const LINKS = [
@@ -32,12 +33,8 @@ export default function Navbar({ onOpenCart }) {
     <header className={`site-navbar ${scrolled ? "site-navbar--scrolled" : ""}`}>
       <nav className="container-narrow site-navbar__inner">
         <Link to="/" className="site-navbar__brand" onClick={() => setMenuOpen(false)}>
-          <img src="/logo1.png" alt="" className="site-navbar__logo" />
-          <span className="site-navbar__divider" aria-hidden="true"></span>
-          <span className="site-navbar__wordmark">
-            <span>Armonización</span>
-            <span>Orofacial</span>
-          </span>
+          <img src={logoSol} alt="Sol Ceballos" className="site-navbar__logo" />
+          <span className="site-navbar__tagline">Armonización facial</span>
         </Link>
 
         <ul className={`site-navbar__links ${menuOpen ? "is-open" : ""}`}>

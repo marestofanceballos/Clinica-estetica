@@ -1,10 +1,34 @@
+.featured-treatments {
+  background: #ede4f5;
+}
+
+.featured-treatments .eyebrow,
+.featured-treatments .section-title,
+.featured-treatments .section-title em {
+  color: #000;
+}
+
 .featured-treatments__link {
   font-family: var(--font-label);
   font-size: 0.85rem;
-  color: var(--color-navy);
+  color: #000;
   display: inline-flex;
   align-items: center;
   gap: 8px;
   margin-bottom: 12px;
   white-space: nowrap;
+}
+
+/* Solo el texto de las tarjetas pasa a negro; fotos, fondo blanco y
+   tamaños de las cards (definidos en Card/card.css) no se tocan. */
+.featured-treatments .brand-card__title,
+.featured-treatments .brand-card__text {
+  color: #000;
+}
+
+/* Badge de categoría ("FACIAL") de cada tarjeta — mismo estilo que en
+   la página /tratamientos. */
+.featured-treatments .tag-pill {
+  background: #ede4f5;
+  color: #000;
 }

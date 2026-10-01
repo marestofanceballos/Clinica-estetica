@@ -5,3 +5,34 @@
 .products-home .eyebrow {
   width: 100%;
 }
+
+.products-home.bg-alt {
+  background-color: #ede4f5;
+}
+
+/* Solo el texto pasa a negro; fotos y badge "SKINCARE" de las tarjetas
+   (definidos en ProductCard/productCard.css) no se tocan. */
+.products-home .eyebrow,
+.products-home .section-title,
+.products-home .section-title em,
+.products-home .section-lede,
+.products-home .product-card__title,
+.products-home .product-card__text {
+  color: #000;
+}
+
+.products-home .btn-brand-outline {
+  color: #000;
+}
+
+/* Badge de categoría ("SKINCARE") y precio de cada tarjeta — mismo
+   estilo que en la página /tienda: solo el texto pasa a negro, el
+   fondo del badge se queda como está. */
+.products-home .product-card__tag,
+.products-home .product-card__price {
+  color: #000;
+}
+
+.products-home .btn-brand-outline:hover {
+  color: var(--color-white);
+}

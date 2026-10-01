@@ -35,6 +35,27 @@
   color: var(--color-navy);
 }
 
+.about-home.bg-blush {
+  background-color: #ede4f5;
+}
+
+/* El texto ya está en negro; la foto no se toca. */
+.about-home .eyebrow,
+.about-home .section-title,
+.about-home .section-title em,
+.about-home .section-lede,
+.about-home__list li {
+  color: #000;
+}
+
+.about-home .btn-brand-outline {
+  color: #000;
+}
+
+.about-home .btn-brand-outline:hover {
+  color: var(--color-white);
+}
+
 @media (max-width: 991px) {
   .about-home__inner {
     grid-template-columns: 1fr;

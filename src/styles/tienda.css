@@ -1,0 +1,27 @@
+.tienda-page {
+  background: #ede4f5;
+}
+
+/* Solo el fondo/texto de la página; las tarjetas de producto (foto,
+   fondo blanco, nombre, precio) no se tocan — definidas en
+   ProductCard/productCard.css. */
+.tienda-page .page-header {
+  background: #ede4f5;
+}
+
+.tienda-page .page-header .eyebrow,
+.tienda-page .page-header__title,
+.tienda-page .page-header__lede {
+  color: #000;
+}
+
+.tienda-page .text-center.py-5 {
+  color: #000;
+}
+
+/* Badge de categoría ("SKINCARE") y precio de cada tarjeta: solo el
+   texto pasa a negro, el fondo del badge se queda blanco/crema. */
+.tienda-page .product-card__tag,
+.tienda-page .product-card__price {
+  color: #000;
+}

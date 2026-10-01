@@ -1,0 +1,21 @@
+.tratamientos-page {
+  background: #ede4f5;
+}
+
+/* Solo el fondo/texto de la página; las tarjetas (foto, fondo blanco,
+   nombre, descripción) no se tocan — definidas en Card/card.css. */
+.tratamientos-page .page-header {
+  background: #ede4f5;
+}
+
+.tratamientos-page .page-header .eyebrow,
+.tratamientos-page .page-header__title,
+.tratamientos-page .page-header__lede {
+  color: #000;
+}
+
+/* Badge de categoría ("FACIAL") de cada tarjeta. */
+.tratamientos-page .tag-pill {
+  background: #ede4f5;
+  color: #000;
+}

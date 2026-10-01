@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center;
   padding: 40px 20px;
-  background: var(--color-bg-alt);
+  background: #ede4f5;
 }
 
 .admin-auth__card {

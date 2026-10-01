@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import logoSol from "../../assets/images/logo_sc_footer_blanco.png";
 import "./footer.css";
 
 export default function Footer() {
@@ -8,7 +9,7 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="container-narrow site-footer__top">
         <div className="site-footer__brand">
-          <img src="/logo.svg" alt="Armonización Orofacial" className="site-footer__logo" width="72" height="72" />
+          <img src={logoSol} alt="Sol Ceballos" className="site-footer__logo" />
           <p>
             Clínica de armonización orofacial dedicada a resultados naturales, seguros y
             personalizados.

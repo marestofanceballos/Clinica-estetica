@@ -10,7 +10,7 @@ export default function AdminLayout() {
       <header className="admin-layout__header">
         <div className="container-narrow admin-layout__header-inner">
           <Link to="/admin" className="admin-layout__brand">
-            Armonización Orofacial <span>· Admin</span>
+            Sol Ceballos <span>· Admin</span>
           </Link>
 
           <nav className="admin-layout__nav">

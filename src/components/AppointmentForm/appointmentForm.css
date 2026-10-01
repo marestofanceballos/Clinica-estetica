@@ -1,5 +1,6 @@
 .appointment-form {
-  background: var(--color-white);
+  background: #ede4f5;
+  border: 1px solid var(--color-ink-soft);
   border-radius: var(--radius-soft);
   padding: 44px;
   box-shadow: var(--shadow-card);
@@ -10,7 +11,7 @@
   font-family: var(--font-label);
   font-size: 0.8rem;
   letter-spacing: 0.03em;
-  color: var(--color-ink);
+  color: #000;
   margin-bottom: 8px;
 }
 
@@ -19,13 +20,18 @@
 .appointment-form textarea {
   width: 100%;
   padding: 13px 16px;
-  border: 1px solid var(--color-line);
+  border: 1px solid #d6c9e8;
   border-radius: 12px;
-  background: var(--color-bg);
+  background: #f6f1fa;
   font-family: var(--font-body);
   font-size: 0.92rem;
-  color: var(--color-ink);
+  color: #000;
   transition: border-color 0.3s var(--ease);
+}
+
+.appointment-form input::placeholder,
+.appointment-form textarea::placeholder {
+  color: var(--color-ink-faint);
 }
 
 .appointment-form input:focus,
@@ -50,7 +56,7 @@
 
 .appointment-form__helper {
   display: block;
-  color: var(--color-ink-faint);
+  color: #000;
   font-size: 0.76rem;
   line-height: 1.4;
   margin-top: 6px;
@@ -61,13 +67,6 @@
   margin-top: 32px;
   width: 100%;
   justify-content: center;
-}
-
-.appointment-form__disclaimer {
-  margin: 14px 0 0;
-  font-size: 0.76rem;
-  color: var(--color-ink-faint);
-  text-align: center;
 }
 
 .appointment-form__success {

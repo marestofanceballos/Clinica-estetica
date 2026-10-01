@@ -1,9 +1,10 @@
 import PageHeader from "../components/PageHeader/PageHeader";
 import AppointmentForm from "../components/AppointmentForm/AppointmentForm";
+import "../styles/turnos.css";
 
 export default function Turnos() {
   return (
-    <>
+    <div className="turnos-page">
       <PageHeader
         eyebrow="Turnos"
         title="Reservá tu consulta de evaluación"
@@ -19,6 +20,6 @@ export default function Turnos() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

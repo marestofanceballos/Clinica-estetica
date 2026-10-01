@@ -39,7 +39,7 @@ export default function Contacto() {
   };
 
   return (
-    <>
+    <div className="contacto-page">
       <PageHeader
         eyebrow="Contacto"
         title="Estamos para ayudarte"
@@ -140,6 +140,6 @@ export default function Contacto() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

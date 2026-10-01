@@ -1,0 +1,13 @@
+.turnos-page {
+  background: #ede4f5;
+}
+
+.turnos-page .page-header {
+  background: #ede4f5;
+}
+
+.turnos-page .page-header .eyebrow,
+.turnos-page .page-header__title,
+.turnos-page .page-header__lede {
+  color: #000;
+}

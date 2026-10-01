@@ -1,5 +1,20 @@
 .treatment-detail {
   padding-bottom: 100px;
+  background: #ede4f5;
+}
+
+/* Fondo y texto de la página; el botón "Pedir turno", el recuadro
+   "Importante" y la imagen no se tocan. */
+.treatment-detail__breadcrumb,
+.treatment-detail__breadcrumb a,
+.treatment-detail__title,
+.treatment-detail__intro,
+.treatment-detail__meta li,
+.treatment-detail .eyebrow,
+.treatment-detail__section-text,
+.treatment-detail__benefit-title,
+.treatment-detail__benefit-text {
+  color: #000;
 }
 
 .treatment-detail__breadcrumb {
@@ -53,8 +68,14 @@
 .treatment-detail__price {
   font-family: var(--font-label);
   font-size: 1.3rem;
-  color: var(--color-gold);
+  color: #000;
   margin-bottom: 6px;
+}
+
+/* Badge de categoría ("FACIAL") — mismo estilo que en /tratamientos. */
+.treatment-detail .tag-pill {
+  background: #ede4f5;
+  color: #000;
 }
 
 .treatment-detail__meta {
@@ -127,8 +148,8 @@
 .treatment-detail__notice {
   margin-top: 24px;
   padding: 14px 18px;
-  border-left: 3px solid var(--color-gold);
-  background: var(--color-bg-alt);
+  border-left: 3px solid #000;
+  background: #ede4f5;
   border-radius: 0 var(--radius-soft) var(--radius-soft) 0;
   display: flex;
   align-items: flex-start;
@@ -138,19 +159,19 @@
 
 .treatment-detail__notice i {
   font-size: 1.2rem;
-  color: var(--color-gold);
+  color: #000;
   margin-top: 2px;
 }
 
 .treatment-detail__notice p {
   margin: 0;
   font-size: 0.84rem;
-  color: var(--color-ink-soft);
+  color: #000;
   line-height: 1.4;
 }
 
 .treatment-detail__notice strong {
-  color: var(--color-ink);
+  color: #000;
 }
 
 @media (max-width: 991px) {

@@ -5,6 +5,7 @@ import Loader from "../components/Loader/Loader";
 import { getTratamientos } from "../services/tratamientosService";
 import { categoriasTratamientos } from "../data/tratamientos";
 import { formatPrecio } from "../utils/format";
+import "../styles/tratamientos.css";
 
 export default function Tratamientos() {
   const [tratamientos, setTratamientos] = useState([]);
@@ -22,7 +23,7 @@ export default function Tratamientos() {
     categoria === "Todos" ? tratamientos : tratamientos.filter((t) => t.categoria === categoria);
 
   return (
-    <>
+    <div className="tratamientos-page">
       <PageHeader
         eyebrow="Tratamientos"
         title="Cada plan, diseñado a la medida de tu rostro"
@@ -52,6 +53,6 @@ export default function Tratamientos() {
           )}
         </div>
       </section>
-    </>
+    </div>
   );
 }

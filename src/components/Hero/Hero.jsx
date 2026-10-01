@@ -27,11 +27,13 @@ export default function Hero() {
 
         <div className="hero__media">
           <div className="hero__portrait">
-            <img
-              src="/dra-sol-ceballos.jpg"
-              alt="Dra. Sol Ceballos, especialista en armonización orofacial"
-              loading="eager"
-            />
+            <div className="hero__portrait-frame">
+              <img
+                src="/dra-sol-ceballos.jpg"
+                alt="Dra. Sol Ceballos, especialista en armonización orofacial"
+                loading="eager"
+              />
+            </div>
           </div>
         </div>
       </div>

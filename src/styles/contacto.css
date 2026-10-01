@@ -51,7 +51,8 @@
 }
 
 .contacto__form {
-  background: var(--color-white);
+  background: #ede4f5;
+  border: 1px solid #d6c9e8;
   border-radius: var(--radius-soft);
   padding: 40px;
   box-shadow: var(--shadow-card);
@@ -61,7 +62,7 @@
   display: block;
   font-family: var(--font-label);
   font-size: 0.8rem;
-  color: var(--color-ink);
+  color: #000;
   margin-bottom: 8px;
 }
 
@@ -69,9 +70,9 @@
 .contacto__form textarea {
   width: 100%;
   padding: 13px 16px;
-  border: 1px solid var(--color-line);
+  border: 1px solid #d6c9e8;
   border-radius: 12px;
-  background: var(--color-bg);
+  background: #f6f1fa;
   font-family: var(--font-body);
   font-size: 0.92rem;
   transition: border-color 0.3s var(--ease);
@@ -128,4 +129,24 @@
   .contacto__form {
     padding: 26px 22px;
   }
+}
+
+/* Fondo y texto de la página completa. El panel oscuro de "Contacto"
+   del Home no vive en esta página (Contacto.jsx tiene su propio
+   formulario), así que no hay excepción que aplicar acá. La tarjeta
+   blanca del formulario (contacto__form) no se toca. */
+.contacto-page {
+  background: #ede4f5;
+}
+
+.contacto-page .page-header {
+  background: #ede4f5;
+}
+
+.contacto-page .page-header .eyebrow,
+.contacto-page .page-header__title,
+.contacto-page .page-header__lede,
+.contacto__item h3,
+.contacto__item p {
+  color: #000;
 }

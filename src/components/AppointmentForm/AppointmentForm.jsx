@@ -246,10 +246,6 @@ export default function AppointmentForm() {
       <button type="submit" className="btn-brand btn-brand-primary appointment-form__submit" disabled={enviando}>
         {enviando ? "Enviando..." : "Solicitar turno"}
       </button>
-      <p className="appointment-form__disclaimer">
-        Este formulario no envía datos a ningún servidor todavía: es una simulación visual lista
-        para conectarse a tu API.
-      </p>
     </form>
   );
 }

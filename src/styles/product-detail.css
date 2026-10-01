@@ -1,5 +1,17 @@
 .product-detail {
   padding-bottom: 100px;
+  background: #ede4f5;
+}
+
+/* Fondo y texto de la página; el botón "Agregar al carrito" y la
+   imagen no se tocan. */
+.product-detail__breadcrumb,
+.product-detail__breadcrumb a,
+.product-detail__title,
+.product-detail__desc,
+.product-detail__meta li,
+.product-detail__related .section-title {
+  color: #000;
 }
 
 .product-detail__breadcrumb {
@@ -67,8 +79,14 @@
 .product-detail__price {
   font-family: var(--font-label);
   font-size: 1.3rem;
-  color: var(--color-gold);
+  color: #000;
   margin-bottom: 18px;
+}
+
+/* Badge de categoría ("SKINCARE") — mismo estilo que en /tienda. */
+.product-detail .tag-pill {
+  background: #ede4f5;
+  color: #000;
 }
 
 .product-detail__desc {
@@ -118,7 +136,8 @@
   height: 30px;
   border-radius: 50%;
   border: none;
-  background: var(--color-sand);
+  background: #000;
+  color: var(--color-white);
   display: inline-flex;
   align-items: center;
   justify-content: center;

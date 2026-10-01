@@ -84,7 +84,7 @@
   padding: 0;
   margin: 0;
   max-width: 720px;
-  border-left: 2px solid var(--color-line);
+  border-left: 2px solid #000;
 }
 
 .sobre-mi__timeline > li {
@@ -103,7 +103,7 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: var(--color-gold);
+  background: #000;
   border: 2px solid var(--color-bg);
 }
 
@@ -148,4 +148,26 @@
   .sobre-mi__block {
     margin-top: 56px;
   }
+}
+
+/* Fondo y texto de la página completa; la foto no se toca. */
+.sobre-mi-page {
+  background: #ede4f5;
+}
+
+.sobre-mi-page .page-header {
+  background: #ede4f5;
+}
+
+.sobre-mi-page .page-header .eyebrow,
+.sobre-mi-page .page-header__title,
+.sobre-mi-page .page-header__lede,
+.sobre-mi-page .eyebrow,
+.sobre-mi-page .section-title,
+.sobre-mi-page .sobre-mi__copy p,
+.sobre-mi-page .sobre-mi__block-title,
+.sobre-mi-page .sobre-mi__list li,
+.sobre-mi-page .sobre-mi__timeline-date,
+.sobre-mi-page .sobre-mi__timeline-items li {
+  color: #000;
 }

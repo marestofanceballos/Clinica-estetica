@@ -13,7 +13,7 @@
 }
 
 .site-footer__logo {
-  height: 72px;
+  height: 84px;
   width: auto;
   display: block;
 }
@@ -80,7 +80,7 @@
 }
 
 .site-footer__contact i {
-  color: var(--color-gold-light);
+  color: var(--color-white);
   margin-top: 3px;
 }
 

@@ -1,3 +1,16 @@
+.primera-consulta {
+  background: #ede4f5;
+}
+
+.primera-consulta .eyebrow,
+.primera-consulta .section-title,
+.primera-consulta .section-lede,
+.primera-consulta__subtitle,
+.primera-consulta__reasons li,
+.primera-consulta__reasons li strong {
+  color: #000;
+}
+
 .primera-consulta__inner {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
@@ -45,7 +58,7 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--color-gold);
+  background: #000;
 }
 
 .primera-consulta__reasons li strong {
