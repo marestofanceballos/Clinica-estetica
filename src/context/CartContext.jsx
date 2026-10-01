@@ -1,4 +1,4 @@
-import { createContext, useContext, useMemo, useReducer } from "react";
+import { createContext, useContext, useEffect, useMemo, useReducer } from "react";
 
 const CartContext = createContext(null);
 
@@ -63,8 +63,29 @@ function cartReducer(state, action) {
   }
 }
 
+// El carrito se guarda en el navegador para que sobreviva a la ida y
+// vuelta a Mercado Pago (que recarga la página).
+const STORAGE_KEY = "carrito";
+
+function loadInitialState() {
+  try {
+    const items = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    return Array.isArray(items) ? { items } : initialState;
+  } catch {
+    return initialState;
+  }
+}
+
 export function CartProvider({ children }) {
-  const [state, dispatch] = useReducer(cartReducer, initialState);
+  const [state, dispatch] = useReducer(cartReducer, undefined, loadInitialState);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state.items));
+    } catch {
+      // Sin almacenamiento disponible (ej. modo privado): el carrito sigue en memoria.
+    }
+  }, [state.items]);
 
   const value = useMemo(() => {
     const cantidadTotal = state.items.reduce((acc, item) => acc + item.cantidad, 0);

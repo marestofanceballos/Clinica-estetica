@@ -14,6 +14,10 @@ import AdminTratamientos from "./pages/AdminTratamientos";
 import AdminTratamientoForm from "./pages/AdminTratamientoForm";
 import AdminProductos from "./pages/AdminProductos";
 import AdminProductoForm from "./pages/AdminProductoForm";
+import AdminPedidos from "./pages/AdminPedidos";
+import PagoExitoso from "./pages/PagoExitoso";
+import PagoRechazado from "./pages/PagoRechazado";
+import PagoPendiente from "./pages/PagoPendiente";
 import AdminLayout from "./components/AdminLayout/AdminLayout";
 import ProtectedRoute from "./components/AdminLayout/ProtectedRoute";
 
@@ -31,6 +35,9 @@ const router = createBrowserRouter([
       { path: "turnos", element: <Turnos /> },
       { path: "sobre-mi", element: <SobreMi /> },
       { path: "contacto", element: <Contacto /> },
+      { path: "pago/exitoso", element: <PagoExitoso /> },
+      { path: "pago/rechazado", element: <PagoRechazado /> },
+      { path: "pago/pendiente", element: <PagoPendiente /> },
     ],
   },
   {
@@ -49,6 +56,7 @@ const router = createBrowserRouter([
               { path: "productos", element: <AdminProductos /> },
               { path: "productos/nuevo", element: <AdminProductoForm /> },
               { path: "productos/:id/editar", element: <AdminProductoForm /> },
+              { path: "pedidos", element: <AdminPedidos /> },
             ],
           },
         ],

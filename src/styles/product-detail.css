@@ -170,3 +170,16 @@
     margin-top: 70px;
   }
 }
+
+.product-detail__devolucion {
+  display: inline-block;
+  margin-top: 26px;
+  font-family: var(--font-label);
+  font-size: 0.8rem;
+  color: #000;
+  text-decoration: underline;
+}
+
+.product-detail__devolucion:hover {
+  color: var(--color-navy);
+}

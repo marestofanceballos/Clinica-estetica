@@ -149,6 +149,17 @@ export default function ProductoDetalle() {
                 <i className="bi bi-check-circle" aria-hidden="true"></i> Producto agregado al carrito.
               </p>
             )}
+
+            <a
+              href={`https://wa.me/5491137055547?text=${encodeURIComponent(
+                `Hola! Quiero consultar sobre una devolución del producto ${producto.nombre}.`
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="product-detail__devolucion"
+            >
+              ¿Necesitás devolver un producto? Escribinos
+            </a>
           </div>
         </div>
 

@@ -2,7 +2,9 @@ import { useState } from "react";
 import PageHeader from "../components/PageHeader/PageHeader";
 import "../styles/contacto.css";
 
-const initialForm = { nombre: "", email: "", mensaje: "" };
+const WHATSAPP_NUMERO = "5491137055547";
+
+const initialForm ={ nombre: "", email: "", mensaje: "" };
 
 function validar(form) {
   const errores = {};
@@ -14,6 +16,18 @@ function validar(form) {
   }
   if (!form.mensaje.trim()) errores.mensaje = "Contanos en qué podemos ayudarte.";
   return errores;
+}
+
+function armarLinkWhatsApp(form) {
+  const lineas = [
+    "Hola! Te escribo desde la web.",
+    `Nombre: ${form.nombre.trim()}`,
+    `Email: ${form.email.trim()}`,
+    `Mensaje: ${form.mensaje.trim()}`,
+  ];
+
+  const mensaje = encodeURIComponent(lineas.join("\n"));
+  return `https://wa.me/${WHATSAPP_NUMERO}?text=${mensaje}`;
 }
 
 export default function Contacto() {
@@ -32,6 +46,10 @@ export default function Contacto() {
     const erroresValidacion = validar(form);
     setErrores(erroresValidacion);
     if (Object.keys(erroresValidacion).length > 0) return;
+
+    // Se abre de forma sincrónica al click para que el navegador no lo
+    // bloquee como popup. La pantalla de "¡Mensaje enviado!" queda en esta pestaña.
+    window.open(armarLinkWhatsApp(form), "_blank", "noopener,noreferrer");
 
     // TODO backend: reemplazar por `api.post('/contacto', form)`.
     setEnviado(true);
