@@ -4,23 +4,6 @@ import { AdminUser } from "../models/AdminUser.js";
 import { HttpError } from "../utils/httpError.js";
 import { asyncHandler } from "../middleware/asyncHandler.js";
 
-const COOKIE_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000; // 7 días
-
-function cookieOptions() {
-  const isProduction = process.env.NODE_ENV === "production";
-
-  return {
-    httpOnly: true,
-    // En producción el frontend y la API están en dominios distintos:
-    // el navegador solo envía la cookie entre sitios con sameSite "none",
-    // que a su vez exige secure (https).
-    sameSite: isProduction ? "none" : "lax",
-    secure: isProduction,
-    maxAge: COOKIE_MAX_AGE_MS,
-    path: "/",
-  };
-}
-
 export const login = asyncHandler(async (req, res) => {
   const { username, password } = req.body;
 
@@ -39,12 +22,13 @@ export const login = asyncHandler(async (req, res) => {
     expiresIn: "7d",
   });
 
-  res.cookie("token", token, cookieOptions());
-  res.json({ username: admin.username });
+  // El token viaja en el cuerpo (y no en una cookie): el frontend y la API
+  // están en dominios distintos y Safari bloquea las cookies entre sitios.
+  res.json({ token, username: admin.username });
 });
 
+// El cierre de sesión lo hace el frontend borrando el token guardado.
 export const logout = asyncHandler(async (req, res) => {
-  res.clearCookie("token", { ...cookieOptions(), maxAge: undefined });
   res.json({ ok: true });
 });
 

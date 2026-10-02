@@ -2,9 +2,10 @@ import jwt from "jsonwebtoken";
 import { HttpError } from "../utils/httpError.js";
 
 export function requireAuth(req, res, next) {
-  const token = req.cookies?.token;
+  // Header "Authorization: Bearer <token>".
+  const [esquema, token] = (req.get("Authorization") ?? "").split(" ");
 
-  if (!token) {
+  if (esquema !== "Bearer" || !token) {
     return next(new HttpError(401, "No hay sesión activa."));
   }
 

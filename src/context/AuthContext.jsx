@@ -5,9 +5,14 @@ const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
   const [admin, setAdmin] = useState(null);
-  const [status, setStatus] = useState("loading"); // "loading" | "authenticated" | "anonymous"
+  // "loading" | "authenticated" | "anonymous". Sin token guardado no hay
+  // sesión que verificar.
+  const [status, setStatus] = useState(() => (authService.hasToken() ? "loading" : "anonymous"));
 
   useEffect(() => {
+    if (!authService.hasToken()) return undefined;
+
+    // El token guardado se valida contra el backend (puede estar vencido).
     let activo = true;
     authService
       .me()
@@ -38,11 +43,11 @@ export function AuthProvider({ children }) {
           setAdmin(data);
           setStatus("authenticated");
         }),
-      logout: () =>
-        authService.logout().finally(() => {
-          setAdmin(null);
-          setStatus("anonymous");
-        }),
+      logout: () => {
+        authService.logout();
+        setAdmin(null);
+        setStatus("anonymous");
+      },
     }),
     [admin, status]
   );
