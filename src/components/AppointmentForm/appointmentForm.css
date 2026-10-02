@@ -46,6 +46,22 @@
   border-color: #b3543f;
 }
 
+/* En celulares (sobre todo iOS) el input de fecha usa el estilo nativo:
+   forma de píldora, texto centrado y, si está vacío, menos alto. Se
+   desactiva para que quede igual al resto de los campos. */
+.appointment-form input[type="date"] {
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+  /* Mismo alto que los demás: una línea de texto + padding + borde. */
+  min-height: calc(1.6em + 28px);
+  text-align: left;
+}
+
+.appointment-form input[type="date"]::-webkit-date-and-time-value {
+  text-align: left;
+}
+
 .appointment-form__error {
   display: block;
   color: #b3543f;
