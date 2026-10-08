@@ -85,7 +85,7 @@
 .product-card__price {
   font-family: var(--font-label);
   font-weight: 500;
-  color: var(--color-gold);
+  color: #000;
 }
 
 .product-card__add {
