@@ -7,7 +7,7 @@ export default function ProtectedRoute() {
 
   if (isLoading) {
     return (
-      <div style={{ paddingTop: "80px" }}>
+      <div className="loader-page" style={{ paddingTop: "80px" }}>
         <Loader label="Verificando sesión" />
       </div>
     );

@@ -6,6 +6,15 @@
   gap: 16px;
   padding: 90px 20px;
   width: 100%;
+  background-color: #ede4f5;
+}
+
+/* Contenedor de página entera mientras carga (ej. detalle de producto o
+   tratamiento, verificación de sesión del admin): lila de arriba a abajo
+   para que no se vea el fondo beige alrededor del loader. */
+.loader-page {
+  background-color: #ede4f5;
+  min-height: 100vh;
 }
 
 .loader-ring {

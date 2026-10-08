@@ -55,7 +55,7 @@ export default function ProductoDetalle() {
 
   if (loading) {
     return (
-      <div className="section pt-0" style={{ paddingTop: "calc(var(--nav-height) + 40px)" }}>
+      <div className="section pt-0 loader-page" style={{ paddingTop: "calc(var(--nav-height) + 40px)" }}>
         <Loader label="Cargando producto" />
       </div>
     );
