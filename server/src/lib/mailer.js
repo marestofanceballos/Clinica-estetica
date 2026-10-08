@@ -1,4 +1,4 @@
-import nodemailer from "nodemailer";
+const BREVO_URL = "https://api.brevo.com/v3/smtp/email";
 
 const formatPrecio = (valor) =>
   new Intl.NumberFormat("es-AR", { style: "currency", currency: "ARS", maximumFractionDigits: 0 }).format(valor);
@@ -11,21 +11,41 @@ function escapeHtml(texto) {
     .replace(/"/g, "&quot;");
 }
 
-// GMAIL_USER / GMAIL_APP_PASSWORD son la cuenta que envía todos los correos.
+// Los mails se envían con la API HTTP de Brevo (y no por SMTP) porque
+// Render bloquea el SMTP en el plan gratis. GMAIL_USER es el remitente
+// de todos los correos y el destinatario del aviso de nuevo pedido.
 function getRemitente() {
   const user = process.env.GMAIL_USER;
-  const pass = process.env.GMAIL_APP_PASSWORD;
+  const apiKey = process.env.BREVO_API_KEY;
 
-  if (!user || !pass) {
-    throw new Error("Faltan GMAIL_USER o GMAIL_APP_PASSWORD en server/.env.");
+  if (!user || !apiKey) {
+    throw new Error("Faltan GMAIL_USER o BREVO_API_KEY en server/.env.");
   }
 
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: { user, pass },
+  return { user, apiKey };
+}
+
+async function enviarMail({ apiKey, from, to, subject, text, html }) {
+  const res = await fetch(BREVO_URL, {
+    method: "POST",
+    headers: {
+      "api-key": apiKey,
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({
+      sender: { email: from },
+      to: [{ email: to }],
+      subject,
+      textContent: text,
+      htmlContent: html,
+    }),
   });
 
-  return { user, transporter };
+  if (!res.ok) {
+    const detalle = await res.text().catch(() => "");
+    throw new Error(`Brevo respondió ${res.status}: ${detalle}`);
+  }
 }
 
 function formatDireccion(direccion) {
@@ -37,7 +57,7 @@ function formatDireccion(direccion) {
  * email que cargó en el checkout.
  */
 export async function enviarConfirmacionAlComprador(pedido) {
-  const { user, transporter } = getRemitente();
+  const { user, apiKey } = getRemitente();
 
   const { comprador, direccion, items, total } = pedido;
   const direccionTexto = formatDireccion(direccion);
@@ -66,7 +86,8 @@ export async function enviarConfirmacionAlComprador(pedido) {
     Si algún dato de la dirección no es correcto, respondé este email y lo corregimos.</p>
   `;
 
-  await transporter.sendMail({
+  await enviarMail({
+    apiKey,
     from: user,
     to: comprador.email,
     subject: "Confirmamos tu compra en Armonización Orofacial",
@@ -79,7 +100,7 @@ export async function enviarConfirmacionAlComprador(pedido) {
  * Envía el aviso de "nuevo pedido" desde y hacia GMAIL_USER.
  */
 export async function enviarAvisoNuevoPedido(pedido) {
-  const { user, transporter } = getRemitente();
+  const { user, apiKey } = getRemitente();
 
   const { comprador, direccion, items, total, nota } = pedido;
   const direccionTexto = formatDireccion(direccion);
@@ -106,7 +127,8 @@ export async function enviarAvisoNuevoPedido(pedido) {
     ${nota ? `<p><strong>Nota:</strong> ${escapeHtml(nota)}</p>` : ""}
   `;
 
-  await transporter.sendMail({
+  await enviarMail({
+    apiKey,
     from: user,
     to: user,
     subject: "Nuevo pedido en Armonización Orofacial",
