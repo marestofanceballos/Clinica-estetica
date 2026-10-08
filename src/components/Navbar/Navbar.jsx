@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useLocation } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
 import logoSol from "../../assets/images/logo_sc_navbar_negro.png";
 import "./navbar.css";
@@ -17,6 +17,16 @@ export default function Navbar({ onOpenCart }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { cantidadTotal } = useCart();
+  const { pathname } = useLocation();
+
+  // En la página principal el logo no navega: sube suavemente hasta arriba.
+  const handleBrandClick = (e) => {
+    setMenuOpen(false);
+    if (pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -42,7 +52,7 @@ export default function Navbar({ onOpenCart }) {
     <>
       <header className={`site-navbar ${scrolled ? "site-navbar--scrolled" : ""}`}>
         <nav className="container-narrow site-navbar__inner">
-          <Link to="/" className="site-navbar__brand" onClick={() => setMenuOpen(false)}>
+          <Link to="/" className="site-navbar__brand" onClick={handleBrandClick}>
             <img src={logoSol} alt="Sol Ceballos" className="site-navbar__logo" />
             <span className="site-navbar__tagline">Armonización facial</span>
           </Link>
