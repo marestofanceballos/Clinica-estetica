@@ -187,6 +187,23 @@ export const list = asyncHandler(async (req, res) => {
   res.json(pedidos);
 });
 
+// Borra el pedido de la lista. No devuelve el stock.
+export const remove = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.isValidObjectId(id)) {
+    throw new HttpError(404, "Pedido no encontrado.");
+  }
+
+  const pedido = await Pedido.findById(id);
+  if (!pedido) {
+    throw new HttpError(404, "Pedido no encontrado.");
+  }
+
+  await Pedido.findByIdAndDelete(id);
+  res.status(204).end();
+});
+
 export const marcarEnviado = asyncHandler(async (req, res) => {
   const { id } = req.params;
 

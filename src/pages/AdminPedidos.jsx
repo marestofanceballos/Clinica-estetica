@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Loader from "../components/Loader/Loader";
-import { getPedidos, marcarPedidoEnviado } from "../services/pedidosService";
+import ConfirmDialog from "../components/ConfirmDialog/ConfirmDialog";
+import { getPedidos, marcarPedidoEnviado, deletePedido } from "../services/pedidosService";
 import { formatPrecio } from "../utils/format";
 import "../styles/admin.css";
 
@@ -14,11 +15,22 @@ function formatFecha(fecha) {
   return new Date(fecha).toLocaleString("es-AR", { dateStyle: "short", timeStyle: "short" });
 }
 
+function mensajeEliminar(pedido) {
+  if (pedido.estado === "pendiente") {
+    return `¿Eliminar el pedido de ${pedido.comprador.nombre}? Esta acción no se puede deshacer.`;
+  }
+
+  const estado = pedido.estado === "pagado" ? "pago" : "enviado";
+  return `Este pedido ya está ${estado}. ¿Eliminarlo igual? Esta acción no se puede deshacer y no devuelve el stock.`;
+}
+
 export default function AdminPedidos() {
   const [pedidos, setPedidos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [actualizandoId, setActualizandoId] = useState(null);
+  const [eliminandoId, setEliminandoId] = useState(null);
+  const [pendienteEliminar, setPendienteEliminar] = useState(null);
 
   useEffect(() => {
     getPedidos()
@@ -36,6 +48,21 @@ export default function AdminPedidos() {
       alert(err.message);
     } finally {
       setActualizandoId(null);
+    }
+  };
+
+  const confirmarEliminar = async () => {
+    const pedido = pendienteEliminar;
+    setPendienteEliminar(null);
+
+    setEliminandoId(pedido.id);
+    try {
+      await deletePedido(pedido.id);
+      setPedidos((prev) => prev.filter((p) => p.id !== pedido.id));
+    } catch (err) {
+      alert(err.message);
+    } finally {
+      setEliminandoId(null);
     }
   };
 
@@ -94,8 +121,8 @@ export default function AdminPedidos() {
                     </span>
                   </td>
                   <td>
-                    {pedido.estado === "pagado" && (
-                      <div className="admin-table__actions">
+                    <div className="admin-table__actions">
+                      {pedido.estado === "pagado" && (
                         <button
                           type="button"
                           onClick={() => marcarEnviado(pedido)}
@@ -103,8 +130,17 @@ export default function AdminPedidos() {
                         >
                           {actualizandoId === pedido.id ? "Guardando..." : "Marcar como enviado"}
                         </button>
-                      </div>
-                    )}
+                      )}
+                      <button
+                        type="button"
+                        className="is-danger"
+                        onClick={() => setPendienteEliminar(pedido)}
+                        disabled={eliminandoId === pedido.id}
+                        aria-label="Eliminar pedido"
+                      >
+                        <i className="bi bi-trash3" aria-hidden="true"></i>
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
@@ -112,6 +148,15 @@ export default function AdminPedidos() {
           </table>
         </div>
       )}
+
+      <ConfirmDialog
+        open={Boolean(pendienteEliminar)}
+        title="Eliminar pedido"
+        message={pendienteEliminar ? mensajeEliminar(pendienteEliminar) : ""}
+        confirmLabel="Eliminar"
+        onConfirm={confirmarEliminar}
+        onCancel={() => setPendienteEliminar(null)}
+      />
     </div>
   );
 }

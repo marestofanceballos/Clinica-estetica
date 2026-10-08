@@ -32,3 +32,7 @@ export function getPedidos() {
 export function marcarPedidoEnviado(id) {
   return api.patch(`/pedidos/${id}/enviado`).then((res) => res.data);
 }
+
+export function deletePedido(id) {
+  return api.delete(`/pedidos/${id}`);
+}
